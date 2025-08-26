@@ -1,3 +1,5 @@
+package Array.circularArray;
+
 public class CircularArray {
     private static int[] circularArray = new int[10];
     private static int capacity = 10;
