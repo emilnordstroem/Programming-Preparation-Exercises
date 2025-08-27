@@ -5,38 +5,39 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.Scanner;
 
-public class ClientTCP {
-    private static DataOutputStream outToServer;
-    private static BufferedReader inFromServer;
+public class Client extends Thread {
+    private final Socket clientSocket;
+    private final DataOutputStream outToServer;
+    private final BufferedReader inFromServer;
 
-    public static void main(String[] args) {
+    public Client(String ipAddress, int port) {
         try {
-            Socket clientSocket = new Socket("localhost", 10_000);
-            outToServer = new DataOutputStream(
+            this.clientSocket = new Socket(ipAddress, port);
+            this.outToServer = new DataOutputStream(
                     clientSocket.getOutputStream()
             );
-            inFromServer = new BufferedReader(
+            this.inFromServer = new BufferedReader(
                     new InputStreamReader(
                             clientSocket.getInputStream()
                     )
             );
-
-            Thread writeThread = new Thread(() -> writeToServer());
-            Thread readThread = new Thread(() -> readFromServer());
-
-            writeThread.start();
-            readThread.start();
-        } catch (UnknownHostException e){
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private static void writeToServer(){
+    @Override
+    public void run() {
+        Thread writeThread = new Thread(() -> writeToServer());
+        Thread readThread = new Thread(() -> readFromServer());
+
+        writeThread.start();
+        readThread.start();
+    }
+
+    private void writeToServer(){
         Scanner messageScanner = new Scanner(System.in);
         String messageToServer;
         while (true) {
@@ -49,12 +50,12 @@ public class ClientTCP {
         }
     }
 
-    private static void readFromServer(){
+    private void readFromServer(){
         String messageFromServer;
         while (true) {
             try {
                 messageFromServer = inFromServer.readLine();
-                System.out.println("Received: " + messageFromServer);
+                System.out.println("received by server: " + messageFromServer);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
