@@ -49,10 +49,6 @@ public class Server extends Thread {
         }
     }
 
-    private void removeClient(){
-
-    }
-
     private void readFromClient(Socket connectionSocket){
         while (true) {
             try {
