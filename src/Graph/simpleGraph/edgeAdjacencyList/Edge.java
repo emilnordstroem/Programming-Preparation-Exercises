@@ -43,8 +43,10 @@ public class Edge <V> {
 
     @Override
     public String toString() {
-        return String.format("Edge between %s and %s%n",
-                v.toString()
+        return String.format("Edge between %s and %s%nWeighted at %.1f%n",
+                v.toString(),
+                u.toString(),
+                w
         );
     }
 }

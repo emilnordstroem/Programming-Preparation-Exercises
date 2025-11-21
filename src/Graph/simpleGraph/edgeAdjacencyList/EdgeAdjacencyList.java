@@ -69,11 +69,18 @@ public class EdgeAdjacencyList<V, E extends Edge<V>> implements Graph<V, E> {
     }
 
     @Override
+    public List<E> getEdges(V v) {
+        return new ArrayList<>(adjacencyList.get(v));
+    }
+
+    @Override
     public void printEdges() {
         adjacencyList.forEach((vertex, edge) -> {
-            edge.forEach(currentEdge -> System.out.println(
-                    currentEdge.toString()
-            ));
+            edge.forEach(currentEdge -> {
+                if (currentEdge.getV().equals(vertex)) {
+                    System.out.println(currentEdge.toString());
+                }
+            });
         });
     }
 
@@ -151,12 +158,31 @@ public class EdgeAdjacencyList<V, E extends Edge<V>> implements Graph<V, E> {
     }
 
     @Override
-    public UnweightedGraph<V, E>.SearchTree dfs(int v) {
+    public UnweightedGraph<V, E>.SearchTree dfs(V v) {
+        /*
+        mark v as visited
+        for each neighbor w of v
+            if w is not visited
+                call DFS(w) recursively
+         */
+
+
         return null;
     }
 
     @Override
-    public UnweightedGraph<V, E>.SearchTree bfs(int v) {
+    public UnweightedGraph<V, E>.SearchTree bfs(V v) {
+        /*
+        enqueue v into the queue
+        while the queue is not empty
+            w = dequeue the first node from the queue
+            add w to the list of visited nodes
+            for each neighbor u of w
+                if u is not visited and not already in the queue
+                    enqueue u into the queue
+         */
+
         return null;
     }
+
 }

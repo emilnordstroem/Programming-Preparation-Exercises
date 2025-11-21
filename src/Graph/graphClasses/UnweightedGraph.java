@@ -60,6 +60,11 @@ public class UnweightedGraph <V, E> implements Graph<V, E> {
     }
 
     @Override
+    public List<E> getEdges(V v) {
+        return List.of();
+    }
+
+    @Override
     public void printEdges() {
 
     }
@@ -90,12 +95,12 @@ public class UnweightedGraph <V, E> implements Graph<V, E> {
     }
 
     @Override
-    public SearchTree dfs(int v) {
+    public SearchTree dfs(V v) {
         return null;
     }
 
     @Override
-    public SearchTree bfs(int v) {
+    public SearchTree bfs(V v) {
         return null;
     }
 

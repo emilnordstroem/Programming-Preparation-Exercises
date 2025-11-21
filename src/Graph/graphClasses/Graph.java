@@ -12,6 +12,8 @@ public interface Graph <V, E> {
 
     List<V> getNeighbors(int index);
     int getDegree(int index);
+
+    List<E> getEdges(V v);
     void printEdges();
 
     void clear();
@@ -23,7 +25,7 @@ public interface Graph <V, E> {
     boolean removeEdge (E e);
 
     // obtain inner SearchTree class from vertex object
-    UnweightedGraph<V, E>.SearchTree dfs(int v);
-    UnweightedGraph<V, E>.SearchTree bfs(int v);
+    UnweightedGraph<V, E>.SearchTree dfs(V v);
+    UnweightedGraph<V, E>.SearchTree bfs(V v);
 
 }

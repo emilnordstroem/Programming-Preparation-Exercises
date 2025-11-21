@@ -1,12 +1,12 @@
 package FactoryPattern;
 
-import lektion08FactoryPattern.coffeFactoryPattern.AmericanCoffeeShop;
-import lektion08FactoryPattern.coffeFactoryPattern.CoffeeShop;
-import lektion08FactoryPattern.coffeFactoryPattern.CoffeeType;
-import lektion08FactoryPattern.userFactoryPattern.AdminFactory;
-import lektion08FactoryPattern.userFactoryPattern.CustomerFactory;
-import lektion08FactoryPattern.userFactoryPattern.User;
-import lektion08FactoryPattern.userFactoryPattern.UserFactory;
+import FactoryPattern.coffeFactoryPattern.AmericanCoffeeShop;
+import FactoryPattern.coffeFactoryPattern.CoffeeShop;
+import FactoryPattern.coffeFactoryPattern.CoffeeType;
+import FactoryPattern.userFactoryPattern.AdminFactory;
+import FactoryPattern.userFactoryPattern.CustomerFactory;
+import FactoryPattern.userFactoryPattern.User;
+import FactoryPattern.userFactoryPattern.UserFactory;
 
 public class Main {
 
